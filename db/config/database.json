@@ -1,0 +1,8 @@
+{
+  "development": {
+    "use_env_variable": "DB",
+    "define": {
+      "timestamps": false
+    }
+  }
+}

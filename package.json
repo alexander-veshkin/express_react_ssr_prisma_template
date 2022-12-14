@@ -1,0 +1,33 @@
+{
+  "name": "core-express-blog-anonymous",
+  "version": "1.0.0",
+  "description": "Домашний проект Эльбрус - анонимный блог",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js --ext js,jsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexander-veshkin/core-express-blog-anonymous.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexander-veshkin/core-express-blog-anonymous/issues"
+  },
+  "homepage": "https://github.com/alexander-veshkin/core-express-blog-anonymous#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.27.0",
+    "sequelize-cli": "^6.5.2"
+  }
+}
