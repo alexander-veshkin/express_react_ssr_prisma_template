@@ -1,0 +1,32 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+
+.post {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.errorMsg {
+  margin-left: 10px;
+  color: red;
+}
+
+* {
+  margin: 10px;
+}
+
+body {
+  background-color: rgb(196, 220, 220);
+}
+
+.form {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin: 10px;
+}
