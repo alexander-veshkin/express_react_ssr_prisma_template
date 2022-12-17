@@ -1,31 +1,50 @@
 const React = require('react');
 const Layout = require('./Layout');
+const { faker } = require('@faker-js/faker');
 
 module.exports = function Form(props) {
   const { textAreaValue, placeHolerInput, placeHolertitle, children, error } =
     props;
   return (
     <Layout>
-      <div class='form'>
+      <div className='form'>
         <br />
         <form action='/addPost' method='POST'>
-          <textarea type='textarea' name='addPost' rows='6' cols='30' />
-          {error.addPost && <div class='errorMsg'>Введите пост!</div>}
+          <textarea
+            type='textarea'
+            name='addPost'
+            rows='6'
+            cols='30'
+            placeholder='Type some post here'
+            value={faker.random.words(Math.floor(Math.random() * (30 - 5) + 5))}
+          />
+          {error.addPost && <div className='errorMsg'>Введите пост</div>}
           <br />
-          <input
-            type='text'
-            name='title'
-            placeholder={placeHolertitle}
-            value='Заголовок'
-          />
-          {props.error.title && <div class='errorMsg'>Введите заголовок</div>}
-          <input
-            type='text'
-            name='posterName'
-            placeholder={placeHolerInput}
-            value='posterName'
-          />
-          {props.error.posterName && <div class='errorMsg'>Введите имя</div>}
+          <div className='inputAndError'>
+            <input
+              type='text'
+              name='title'
+              placeholder={placeHolertitle}
+              value={faker.random.word().toLocaleUpperCase()}
+            />
+            {props.error.title && (
+              <div className='errorMsg'>Введите заголовок</div>
+            )}
+          </div>
+          <div className='inputAndError'>
+            <input
+              type='text'
+              name='posterName'
+              placeholder={placeHolerInput}
+              value={faker.name.fullName()}
+            />
+            {props.error.posterName && (
+              <div className='errorMsg'>Введите имя</div>
+            )}
+          </div>
+          <div>
+            <input type='text' name='tag' placeholder='Enter tag' />
+          </div>
           <div>
             <button type='submit'>Add post</button>
           </div>

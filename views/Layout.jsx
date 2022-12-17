@@ -10,15 +10,21 @@ module.exports = function Layout(props) {
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <link rel='stylesheet' href='/css/style.css'></link>
         <script defer src='/js/application.js'></script>
-        <title> {myTitle} </title>
+        <title>{myTitle}</title>
       </head>
-      <body class='container'>
+      <body className='container'>
         <nav>
           <a href='/form'>
             <button>Добавить пост</button>
           </a>
-          <a href='/'>
+          <a href='/lastPost'>
+            <button>Последний пост</button>
+          </a>
+          <a href='/allPosts'>
             <button>Все посты</button>
+          </a>
+          <a href='/'>
+            <button>Теги</button>
           </a>
         </nav>
         {children}
