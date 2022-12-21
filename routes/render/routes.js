@@ -1,11 +1,18 @@
 const express = require('express');
-const { sequelize, Post } = require('../db/models');
-const render = require('../lib/render');
-const Layout = require('../views/Layout');
-const Form = require('../views/Form');
-const post = require('../views/Post');
-const allPosts = require('../views/AllPosts');
+const { Post } = require('../../db/models');
+const Sequelize = require("sequelize");
+const render = require('../../lib/render');
+const Layout = require('../../views/Layout');
+const Form = require('../../views/Form');
+const post = require('../../views/Post');
+const Search = require('../../views/Search');
+const allPosts = require('../../views/AllPosts');
 const router = express.Router();
+const Op = Sequelize.Op;
+const operatorsAliases = {
+  $like: Op.like,
+  $not: Op.not
+}
 
 const app = express();
 app.use(express.json());
@@ -15,6 +22,13 @@ router.get('/', (req, res) => {
   render(Layout, { myTitle: 'Blog', doctType: true }, res);
 });
 
+
+router.get('/Search', async (req, res) => {
+    render(Search, {  }, res);
+    const props = await Post.findAll({where: {title: {[Op.like]: `%${req.query.SearchInput}%`}}})
+  });
+
+  
 router.get('/allPosts', async (req, res) => {
   const props = await Post.findAll({ raw: true });
 

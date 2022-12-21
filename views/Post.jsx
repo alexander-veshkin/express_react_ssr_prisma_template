@@ -1,5 +1,5 @@
-const React = require('react');
 const Layout = require('./Layout');
+const React = require('react');
 
 module.exports = function Post({ props }) {
   const { body, title } = props;

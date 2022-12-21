@@ -26,6 +26,9 @@ module.exports = function Layout(props) {
           <a href='/'>
             <button>Теги</button>
           </a>
+          <a href='/Search'>
+            <button>Поиск</button>
+          </a>
         </nav>
         {children}
       </body>
