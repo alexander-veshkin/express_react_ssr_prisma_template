@@ -3,7 +3,6 @@ const { Post } = require('../../db/models');
 const Sequelize = require("sequelize");
 const render = require('../../lib/render');
 const Layout = require('../../views/Layout');
-const Form = require('../../views/Form');
 const post = require('../../views/Post');
 const Search = require('../../views/Search');
 const allPosts = require('../../views/AllPosts');

@@ -1,14 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const { Post } = require('../../db/models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const operatorsAliases = {
+  $like: Op.like,
+  $not: Op.not
+}
 
 //api/posts
 router
   .route('/')
   .get((req, res) => {
-    Post.findAll({ raw: true })
-      .then((allPosts) => res.json(allPosts))
-      .catch((error) => res.status(500).json({ message: error.message }));
+    if (!Object.keys(req.query).length) {
+      Post.findAll({ raw: true })
+        .then((allPosts) => res.json(allPosts))
+        .catch((error) => res.status(500).json({ message: error.message }));
+    }
+    if (Object.keys(req.query).length) {
+        const  { SearchInput } = req.query
+        Post.findAll({where: { title: { [Op.like]: `%${req.query.SearchInput}%` } }})
+          .then((allPosts) => res.json(allPosts))
+          .catch((error) => res.status(500).json({ message: error.message }));
+      }
   })
   .post((req, res) => {
     const { addPost, title, posterName, tag, date } = req.body;

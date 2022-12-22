@@ -16,14 +16,24 @@ app.use(express.urlencoded({ extended: false }));
 
 //routes
 const Router = require('./routes/render/routes');
+const searchRoute = require('./routes/render/searchRoute');
+const mainRoute = require('./routes/render/mainRoute');
+const addPostRoute = require('./routes/render/addPostRoute');
+const allPostsRoute = require('./routes/render/allPostsRoute');
+const lastPostRoute = require('./routes/render/lastPostRoute');
+
+
+//api routes
 const postApi = require('./routes/api/postsApi');
 
 //routes handlers
-app.use('/', Router);
+app.use('/', mainRoute);
 app.use('/form', Router);
-app.use('/addPost', Router);
-app.use('/Search', Router);
+app.use('/addPost', addPostRoute);
+app.use('/lastPost', lastPostRoute);
+app.use('/search', searchRoute);
 app.use('/api/posts', postApi);
+app.use('/allPosts', allPostsRoute);
 
 const { PORT } = process.env;
 

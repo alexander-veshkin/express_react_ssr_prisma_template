@@ -7,7 +7,7 @@ module.exports = function AllPosts({ props }) {
   return (
     <Layout>
       {props.map((i) => (
-        <Post props={i} key={i.id} />
+        <Post props={i} key={i.id}/>
       ))}
     </Layout>
   );

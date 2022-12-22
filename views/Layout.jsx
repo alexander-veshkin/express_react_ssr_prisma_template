@@ -14,7 +14,7 @@ module.exports = function Layout(props) {
       </head>
       <body className='container'>
         <nav>
-          <a href='/form'>
+          <a href='/addPost'>
             <button>Добавить пост</button>
           </a>
           <a href='/lastPost'>

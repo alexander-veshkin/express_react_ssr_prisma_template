@@ -2,13 +2,15 @@ const Layout = require('./Layout');
 const React = require('react');
 
 module.exports = function Post({ props }) {
-  const { body, title } = props;
-  let date = props.date.toDateString()
+  const { body, title, visibility } = props;
+  
+  let date = props.date ? props.date.toDateString() : ''
+
   return (
-      <div className='viewPost'>
-        <div className='titilePost'>{title}</div>
-        <div>{body}</div>
-        <div className='datePost'>{date}</div>
-      </div>
+    <div className='viewPost' style={{ visibility: visibility }}>
+      <div className='titilePost'>{title}</div>
+      <div className='bodyPost'>{body}</div>
+      <div className='datePost'>{date}</div>
+    </div>
   );
 };
