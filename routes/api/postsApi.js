@@ -15,7 +15,7 @@ router
 
     if (addPost) {
       Post.create({ body: addPost, title: title, name: posterName, date: date })
-        .then((newPost) => res.status(200).json(newPost))
+        .then((newPost) => res.json(newPost))
         .catch((error) => res.status(403).json({ message: error.message }));
     } else {
       res.status(400).json({ errr: 'field addPost empty' });
@@ -25,31 +25,33 @@ router
 router
   .route('/:id')
   .put((req, res) => {
-    let id = req.params.id;
+    const { id } = req.params;
 
     const { addPost, title, posterName, tag, date } = req.body;
 
     if (addPost) {
       Post.update(
         { body: addPost, title: title, name: posterName, date: date },
-        { where: { id: id } }
+        { where: { id: id }, raw: true, returning: true }
       )
-        .then((result) => {
-          result[0] === 1
-            ? res.status(200).json({ postid: id, updated: 'OK' })
-            : res.status(400).json({ res: `cant UPDATE post with ${id}` });
+        .then((updatedPost) => {
+          const [, [updatedData]] = updatedPost;
+
+          updatedPost[0] === 1
+            ? res.json(updatedData)
+            : res.status(500).json({ res: `cant UPDATE post with ${id}` });
         })
-        .catch((error) => res.status(403).json({ message: error.message }));
+        .catch((error) => res.status(500).json({ message: error.message }));
     } else {
       res.status(400).json({ res: 'cant UPDATE post without body' });
     }
   })
   .delete((req, res) => {
-    let id = req.params.id;
-    Post.destroy({ where: { id: id } }).then((result) => {
+    const { id } = req.params;
+    Post.destroy({ where: { id } }).then((result) => {
       result === 1
-        ? res.status(200).json({ postid: id, deleted: 'OK' })
-        : res.status(400).json({ res: `cant DELETE post with id ${id}` });
+        ? res.json({ id: +id, deleted: true })
+        : res.status(400).json({ id: +id, deleted: false });
     });
   });
 
