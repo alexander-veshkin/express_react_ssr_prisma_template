@@ -5,6 +5,30 @@
   border: 1px dotted black;
 }
 
+.loginForm input {
+  width: 90px;
+}
+
+.loginOrRegInputs {
+  display: flex;
+}
+
+.errMsg{
+  color: red;
+}
+
+.loginForm button,
+.registrationForm button,
+.showLoginForm button,
+.showRegistrationForm button {
+  background-color: darkorange;
+  width: auto;
+}
+
+.loginForm {
+  padding-bottom: 20px;
+}
+
 .datePost {
   color: gray;
   font-size: 12px;
@@ -14,7 +38,7 @@
 .titilePost {
   font-size: 16px;
   padding: 0px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .inputAndError {

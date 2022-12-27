@@ -6,7 +6,6 @@ const addPost = require('../../views/addPost');
 
 const { Post } = require('../../db/models');
 
-
 router.get('/', (req, res) => {
   let error = { addPost: false, posterName: false, title: false };
 
@@ -17,6 +16,7 @@ router.get('/', (req, res) => {
       textAreaValue: 'Some post',
       placeHolertitle: 'Some title',
       error,
+      myTitle: 'Blog',
     },
     res
   );
@@ -36,6 +36,7 @@ router.post('/', async (req, res) => {
       textAreaValue: 'ВВЕДИТЕ ПОСТ!',
       placeHolertitle: 'Some title',
       error,
+      myTitle: 'Blog',
     },
     res
   );

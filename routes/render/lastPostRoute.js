@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     order: [['date', 'DESC']],
     raw: true,
   });
-  render(allPosts, { props }, res);
+  render(allPosts, { myTitle: 'Blog', props }, res);
 });
 
 module.exports = router;

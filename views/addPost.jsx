@@ -3,10 +3,10 @@ const Layout = require('./Layout');
 const { faker } = require('@faker-js/faker');
 
 module.exports = function Form(props) {
-  const { textAreaValue, placeHolerInput, placeHolertitle, children, error } =
+  const { myTitle, textAreaValue, placeHolerInput, placeHolertitle, children, error } =
     props;
   return (
-    <Layout>
+    <Layout myTitle = {myTitle}>
       <div className='form'>
         <br />
         <form action='/addPost' method='POST'>
