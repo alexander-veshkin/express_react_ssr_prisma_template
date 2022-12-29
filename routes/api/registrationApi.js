@@ -30,11 +30,10 @@ router.route('/').post(async (req, res) => {
       date: date,
     })
       .then((newUser) => {
-        req.session.count++;
+        //create session
         req.session.userid = newUser.id;
+        req.session.userName = newUser.name;
         res.json({ newUserId: newUser.id, newUserLogin: newUser.login });
-        console.log(req.session);
-        console.log((req.session.userid = newUser.id));
       })
       .catch((error) => res.status(403).json({ message: error.message }));
   } else {

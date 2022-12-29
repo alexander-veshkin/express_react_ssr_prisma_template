@@ -1,9 +1,9 @@
 const React = require('react');
 const LoginForm = require('./LoginForm');
+const UserHeader = require('./UserHeader');
 
 module.exports = function Layout(props) {
-  const { myTitle, children, loginform } = props;
-  const loginForm = true;
+  const { myTitle, children, loginform, userid, username } = props;
   return (
     <html lang='ru'>
       <head>
@@ -15,22 +15,10 @@ module.exports = function Layout(props) {
         <title>{myTitle}</title>
       </head>
       <body className='container'>
+        {userid && <UserHeader userid={userid} username={username}/>}
         <nav>
-          {loginForm && <LoginForm />}
+          {!userid && <LoginForm />}
 
-          {/* {loginForm ? (
-            <div className='loginForm'>
-              <form action='/login' method='POST'>
-                <label htmlFor='login'>Логин: </label>
-                <input type='text' name='login' placeholder='login' />
-                <label htmlFor='pass'>Пароль: </label>
-                <input type='password' name='pass' placeholder='password' />
-                <button className='loginBtn'>Войти</button>
-              </form>
-            </div>
-          ) : (
-            ''
-          )} */}
           <a href='/addPost'>
             <button>Добавить пост</button>
           </a>

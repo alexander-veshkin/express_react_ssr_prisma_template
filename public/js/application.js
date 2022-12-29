@@ -2,6 +2,11 @@ function getUrl() {
   return 'http:' + location.href.match(/\/\/(.*?)\//g);
 }
 
+if (document.getElementById('logOut')) {
+  const logoutLink = document.getElementById('logOut').getElementsByTagName('a')[0]
+  logoutLink.setAttribute('href', getUrl() + 'clear')
+}
+
 async function postData(url = '', data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {

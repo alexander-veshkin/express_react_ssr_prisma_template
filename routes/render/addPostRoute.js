@@ -17,6 +17,8 @@ router.get('/', (req, res) => {
       placeHolertitle: 'Some title',
       error,
       myTitle: 'Blog',
+      userid: req.session.userid,
+      username: req.session.userName,
     },
     res
   );
@@ -37,6 +39,8 @@ router.post('/', async (req, res) => {
       placeHolertitle: 'Some title',
       error,
       myTitle: 'Blog',
+      userid: req.session.userid,
+      username: req.session.userName,
     },
     res
   );

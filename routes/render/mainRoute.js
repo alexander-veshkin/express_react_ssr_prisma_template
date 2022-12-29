@@ -7,7 +7,17 @@ const Layout = require('../../views/Layout');
 // root
 router.get('/', (req, res) => {
   res.cookie('test', 42);
-  render(Layout, { myTitle: 'Blog', doctType: true }, res);
+  console.log(req.session.userName);
+  render(
+    Layout,
+    {
+      myTitle: 'Blog',
+      doctType: true,
+      userid: req.session.userid,
+      username: req.session.userName,
+    },
+    res
+  );
 });
 
 //test routes
@@ -23,7 +33,7 @@ router.get('/get', (req, res) => {
   res.json({ ttt: 'ttt' });
 });
 
-router.get('/count', (req, res) => {
+router.get('/session', (req, res) => {
   req.session.count++;
   req.session.userId = 5;
   res.json(req.session);
@@ -34,7 +44,7 @@ router.get('/clear', (req, res) => {
     res.clearCookie('user_sid');
     res.clearCookie('test');
     res.clearCookie('cookieKey');
-    res.send(err);
+    res.redirect('/');
   });
 });
 

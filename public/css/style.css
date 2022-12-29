@@ -9,11 +9,16 @@
   width: 90px;
 }
 
-.loginOrRegInputs {
+.loginOrRegInputs,
+.userHeader {
+  color: rgb(60, 58, 58);
+  font-size: 15px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.errMsg{
+.errMsg {
   color: red;
 }
 

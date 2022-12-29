@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     order: [['date', 'DESC']],
     raw: true,
   });
-  render(allPosts, { myTitle: 'Blog', props }, res);
+  render(allPosts, { myTitle: 'Blog', props, userid: req.session.userid, username: req.session.userName }, res);
 });
 
 module.exports = router;

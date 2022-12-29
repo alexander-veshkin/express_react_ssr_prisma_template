@@ -14,10 +14,14 @@ const operatorsAliases = {
 
 //search
 router.get('/', async (req, res) => {
-    render(Search, {}, res);
-    const props = await Post.findAll({
-      where: { title: { [Op.like]: `%${req.query.SearchInput}%` } },
-    });
+    render(Search, {userid: req.session.userid, username: req.session.userName}, res);
+  });
+
+  router.get('/:id', (req, res) => {
+    console.log(req.params);
+    console.log(req.params.id);
+    console.log('<<<<<<');
+    res.send('test');
   });
 
 module.exports = router;
