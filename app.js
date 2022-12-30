@@ -25,6 +25,7 @@ serverConfig(app);
 //api routes
 const postApi = require('./routes/api/postsApi');
 const registrationApi = require('./routes/api/registrationApi');
+const loginApi = require('./routes/api/loginApi');
 
 //routes handlers
 app.use('/', mainRoute);
@@ -34,6 +35,7 @@ app.use('/lastPost', lastPostRoute);
 app.use('/search', searchRoute);
 app.use('/api/posts', postApi);
 app.use('/api/reg', registrationApi);
+app.use('/api/login', loginApi);
 app.use('/allPosts', allPostsRoute);
 
 app.listen(PORT, async () => {

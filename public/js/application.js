@@ -2,9 +2,13 @@ function getUrl() {
   return 'http:' + location.href.match(/\/\/(.*?)\//g);
 }
 
+const get = (loc) => document.querySelector(loc);
+
 if (document.getElementById('logOut')) {
-  const logoutLink = document.getElementById('logOut').getElementsByTagName('a')[0]
-  logoutLink.setAttribute('href', getUrl() + 'clear')
+  const logoutLink = document
+    .getElementById('logOut')
+    .getElementsByTagName('a')[0];
+  logoutLink.setAttribute('href', getUrl() + 'clear');
 }
 
 async function postData(url = '', data = {}) {
@@ -26,16 +30,40 @@ async function postData(url = '', data = {}) {
 }
 
 //login
-const regForm = document.getElementsByClassName('registrationForm')[0];
-const regBtn = document.getElementsByClassName('regBtn')[0];
-const errMsg = document.getElementsByClassName('errMsg')[0];
+if (get('.loginForm')) {
+  const errMsg = document.getElementsByClassName('errMsg')[0];
 
-const loginReg = document.getElementsByName('loginReg')[0];
-const nameReg = document.getElementsByName('nameReg')[0];
-const passReg = document.getElementsByName('passReg')[0];
-const passRepeat = document.getElementsByName('passRepeat')[0];
+  get('.loginBtn').addEventListener('click', async () => {
+    event.preventDefault();
 
-if (regForm) {
+    const payload = {
+      login: get("input[name='login']").value,
+      pass: get("input[name='pass']").value,
+    };
+
+    const resp = await postData(getUrl() + 'api/login', payload);
+
+    if (resp.errr) {
+      errMsg.textContent = resp.errr;
+      errMsg.setAttribute('style', 'display:block');
+    } else {
+      window.location.href = window.location.href;
+      regForm.setAttribute('style', 'display:none');
+    }
+  });
+}
+
+//registration
+if (document.getElementsByClassName('registrationForm')[0]) {
+  const regForm = document.getElementsByClassName('registrationForm')[0];
+  const regBtn = document.getElementsByClassName('regBtn')[0];
+  const errMsg = document.getElementsByClassName('errMsg')[0];
+
+  const loginReg = document.getElementsByName('loginReg')[0];
+  const nameReg = document.getElementsByName('nameReg')[0];
+  const passReg = document.getElementsByName('passReg')[0];
+  const passRepeat = document.getElementsByName('passRepeat')[0];
+
   regBtn.addEventListener('click', async () => {
     event.preventDefault();
     errMsg.setAttribute('style', 'display:none');
@@ -74,7 +102,7 @@ if (location.href.includes('Search')) {
     const res = await response.json();
 
     if (res.length) {
-      res.forEach((post) => { 
+      res.forEach((post) => {
         let postContainer = document.querySelectorAll('.viewPost')[0];
         var newPostContainer = postContainer.cloneNode(true);
         postContainer.after(newPostContainer);

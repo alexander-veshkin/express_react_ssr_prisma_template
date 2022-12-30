@@ -3,7 +3,7 @@ const router = express.Router();
 const { User } = require('../../db/models');
 const Sequelize = require('sequelize');
 
-//api/posts
+//api/reg
 router.route('/').post(async (req, res) => {
   const { loginReg, nameReg, passReg, passRepeat } = req.body;
   let date = new Date();

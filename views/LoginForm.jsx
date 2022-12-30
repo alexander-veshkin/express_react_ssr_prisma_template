@@ -6,16 +6,8 @@ module.exports = function LoginForm() {
   let errMsg = 'none';
   return (
     <>
-      <div className='loginOrRegInputs'>
-        <div className='showLoginForm'>
-          <button>Войти</button>
-        </div>
-        <div className='showRegistrationForm'>
-          <button>Зарегистрироваться</button>
-        </div>
-      </div>
       <div className='loginForm' style={{ display: displayLogin }}>
-        <form action='/login' method='POST'>
+        <form action='/api/login' method='POST'>
           <label htmlFor='login'>Логин: </label>
           <input type='text' name='login' placeholder='login' />
           <label htmlFor='pass'>Пароль: </label>
