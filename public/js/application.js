@@ -74,7 +74,7 @@ if (location.href.includes('Search')) {
     const res = await response.json();
 
     if (res.length) {
-      res.forEach((post) => {
+      res.forEach((post) => { 
         let postContainer = document.querySelectorAll('.viewPost')[0];
         var newPostContainer = postContainer.cloneNode(true);
         postContainer.after(newPostContainer);

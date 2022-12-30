@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const checkAdmin = require('../../lib/middleware/middleware.js');
 const render = require('../../lib/render');
 const Layout = require('../../views/Layout');
 
@@ -35,7 +36,11 @@ router.get('/get', (req, res) => {
 
 router.get('/session', (req, res) => {
   req.session.count++;
-  req.session.userId = 5;
+  res.json(req.session);
+});
+
+router.get('/admin', checkAdmin, (req, res) => {
+  req.session.count++;
   res.json(req.session);
 });
 
