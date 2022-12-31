@@ -11,7 +11,7 @@ module.exports = function LoginForm() {
           <label htmlFor='login'>Логин: </label>
           <input type='text' name='login' placeholder='login' />
           <label htmlFor='pass'>Пароль: </label>
-          <input type='password' name='pass' placeholder='password' />
+          <input type='password' name='password' placeholder='password' />
           <button className='loginBtn' type='submit'>
             Войти
           </button>

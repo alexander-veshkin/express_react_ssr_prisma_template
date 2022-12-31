@@ -33,15 +33,17 @@ async function postData(url = '', data = {}) {
 if (get('.loginForm')) {
   const errMsg = document.getElementsByClassName('errMsg')[0];
 
-  get('.loginBtn').addEventListener('click', async () => {
+  get('.loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    const {password, login, action } = event.target
+
     const payload = {
-      login: get("input[name='login']").value,
-      pass: get("input[name='pass']").value,
+      login: login.value,
+      pass: password.value,
     };
 
-    const resp = await postData(getUrl() + 'api/login', payload);
+    const resp = await postData(action, payload);
 
     if (resp.errr) {
       errMsg.textContent = resp.errr;

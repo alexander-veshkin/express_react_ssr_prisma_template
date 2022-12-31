@@ -38,6 +38,8 @@ app.use('/api/reg', registrationApi);
 app.use('/api/login', loginApi);
 app.use('/allPosts', allPostsRoute);
 
+
+
 app.listen(PORT, async () => {
   console.log(`Server started: http://localhost:${PORT}/`);
   try {

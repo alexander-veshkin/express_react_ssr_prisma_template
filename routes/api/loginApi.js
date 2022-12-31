@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../../db/models');
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 
 //api/login
 router.route('/').post(async (req, res) => {
@@ -16,7 +17,9 @@ router.route('/').post(async (req, res) => {
   if (!user) { return res.status(400).json({ errr: 'Wrong login or password' }) }
 
   //check pass
-  if (user.password === pass) {
+  const passCheck = await bcrypt.compare(pass, user.password);
+
+  if (passCheck) {
     req.session.userid = user.id
     req.session.userName = user.login
     res.status(200).json({ msg: "Logged in", login: user.login, userid: user.id })

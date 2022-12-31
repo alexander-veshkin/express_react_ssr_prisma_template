@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../../db/models');
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 
 //api/reg
 router.route('/').post(async (req, res) => {
@@ -23,13 +24,16 @@ router.route('/').post(async (req, res) => {
 
   //CREATE USER
   if (loginReg && nameReg && passReg && passRepeat) {
+  //HASH PW
+    const hash = await bcrypt.hash(passReg, 10);
+
     User.create({
       name: nameReg,
       login: loginReg,
-      password: passReg,
+      password: hash,
       date: date,
     })
-      .then((newUser) => {
+      .then( (newUser) => {
         //create session
         req.session.userid = newUser.id;
         req.session.userName = newUser.name;
