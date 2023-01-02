@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { sequelize } = require('./db/models');
 const session = require('express-session');
+const { checkLoggedIn } = require('./lib/middleware/middleware')
 
 require('@babel/register');
 
@@ -22,6 +23,8 @@ const { PORT } = process.env;
 //применить конфигурацию сервера
 serverConfig(app);
 
+//middlewares
+
 //api routes
 const postApi = require('./routes/api/postsApi');
 const registrationApi = require('./routes/api/registrationApi');
@@ -29,16 +32,14 @@ const loginApi = require('./routes/api/loginApi');
 
 //routes handlers
 app.use('/', mainRoute);
-app.use('/form', Router);
-app.use('/addPost', addPostRoute);
-app.use('/lastPost', lastPostRoute);
-app.use('/search', searchRoute);
+app.use('/form', checkLoggedIn, Router);
+app.use('/addPost', checkLoggedIn, addPostRoute);
+app.use('/lastPost', checkLoggedIn, lastPostRoute);
+app.use('/search', checkLoggedIn, searchRoute);
 app.use('/api/posts', postApi);
 app.use('/api/reg', registrationApi);
 app.use('/api/login', loginApi);
-app.use('/allPosts', allPostsRoute);
-
-
+app.use('/allPosts', checkLoggedIn, allPostsRoute);
 
 app.listen(PORT, async () => {
   console.log(`Server started: http://localhost:${PORT}/`);

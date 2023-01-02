@@ -10,7 +10,7 @@ router.route('/').post(async (req, res) => {
   let date = new Date();
 
   const checkUser = await User.findOne({
-    where: { login: loginReg },
+    where: { login: loginReg }, attributes: ['id'],
     raw: true,
   });
 

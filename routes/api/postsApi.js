@@ -18,7 +18,6 @@ router
         .catch((error) => res.status(500).json({ message: error.message }));
     }
     if (Object.keys(req.query).length) {
-        const  { SearchInput } = req.query
         Post.findAll({where: { title: { [Op.like]: `%${req.query.SearchInput}%` } }})
           .then((allPosts) => res.json(allPosts))
           .catch((error) => res.status(500).json({ message: error.message }));

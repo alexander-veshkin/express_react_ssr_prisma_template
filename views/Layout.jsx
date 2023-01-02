@@ -15,25 +15,31 @@ module.exports = function Layout(props) {
         <title>{myTitle}</title>
       </head>
       <body className='container'>
-        {userid && <UserHeader userid={userid} username={username}/>}
+        {userid && <UserHeader userid={userid} username={username} />}
         <nav>
           {!userid && <LoginForm />}
 
-          <a href='/addPost'>
-            <button>Добавить пост</button>
-          </a>
-          <a href='/lastPost'>
-            <button>Последний пост</button>
-          </a>
-          <a href='/allPosts'>
-            <button>Все посты</button>
-          </a>
-          <a href='/'>
-            <button>Теги</button>
-          </a>
-          <a href='/Search'>
-            <button>Поиск</button>
-          </a>
+          {userid ? (
+            <div className='mainControls'>
+              <a href='/addPost'>
+                <button>Добавить пост</button>
+              </a>
+              <a href='/lastPost'>
+                <button>Последний пост</button>
+              </a>
+              <a href='/allPosts'>
+                <button>Все посты</button>
+              </a>
+              <a href='/'>
+                <button>Теги</button>
+              </a>
+              <a href='/Search'>
+                <button>Поиск</button>
+              </a>
+            </div>
+          ) : (
+            ''
+          )}
         </nav>
         {children}
       </body>

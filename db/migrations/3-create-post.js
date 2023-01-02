@@ -15,11 +15,15 @@ module.exports = {
       title: {
         type: Sequelize.TEXT,
       },
-      name: {
-        type: Sequelize.STRING,
-      },
       date: {
         type: Sequelize.DATE,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
     });
   },

@@ -36,7 +36,7 @@ if (get('.loginForm')) {
   get('.loginForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const {password, login, action } = event.target
+    const { password, login, action } = event.target;
 
     const payload = {
       login: login.value,
@@ -94,7 +94,7 @@ if (location.href.includes('Search')) {
   const searchInput = document.getElementById('inputValue');
   const viewPost = document.getElementsByClassName('viewPost')[0];
 
-  searchInput.value = 'PARSING';
+  searchInput.value = 'Seed post 5';
   searchInput.focus();
 
   searchBtn.addEventListener('click', async () => {

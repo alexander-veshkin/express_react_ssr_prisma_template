@@ -9,9 +9,9 @@ module.exports = function LoginForm() {
       <div className='loginForm' style={{ display: displayLogin }}>
         <form action='/api/login' method='POST'>
           <label htmlFor='login'>Логин: </label>
-          <input type='text' name='login' placeholder='login' />
+          <input type='text' name='login' placeholder='login' require/>
           <label htmlFor='pass'>Пароль: </label>
-          <input type='password' name='password' placeholder='password' />
+          <input type='password' name='password' placeholder='password' require/>
           <button className='loginBtn' type='submit'>
             Войти
           </button>
@@ -24,9 +24,9 @@ module.exports = function LoginForm() {
       >
         <form method='POST' action='/api/reg'>
           <label htmlFor='loginReg'>Логин: </label>
-          <input type='text' name='loginReg' placeholder='login' />
+          <input type='text' name='loginReg' placeholder='login' require/>
           <label htmlFor='nameReg'>Имя: </label>
-          <input type='text' name='nameReg' placeholder='name' />
+          <input type='text' name='nameReg' placeholder='name' require />
           <br />
           <label htmlFor='passReg'>Пароль: </label>
           <input
@@ -36,6 +36,7 @@ module.exports = function LoginForm() {
             maxlength='20'
             placeholder='password'
             value='123456'
+            require
           />
           <label htmlFor='passRepeat'>Повторите пароль: </label>
           <input
@@ -45,6 +46,7 @@ module.exports = function LoginForm() {
             maxlength='20'
             placeholder='repeat password'
             value='123456'
+            require
           />
           <button className='regBtn' type='submit'>
             Зарегистрироваться

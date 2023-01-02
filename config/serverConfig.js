@@ -1,7 +1,7 @@
 const session = require('express-session');
 const sessionConfig = require('./sessionConfig');
 const cookieParser = require('cookie-parser');
-const sesionLog = require('../lib/middleware/middleware');
+const { sessionLog } = require('../lib/middleware/middleware');
 
 require('dotenv').config();
 
@@ -18,7 +18,7 @@ const serverConfig = (app) => {
   app.use(cookieParser());
   app.use(session(sessionConfig));
 
-  app.use(sesionLog);
+  app.use(sessionLog);
 };
 
 module.exports = serverConfig;

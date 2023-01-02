@@ -48,7 +48,6 @@ router.post('/', async (req, res) => {
   if (!Object.values(error).includes(true)) {
     await Post.create({
       body: req.body.addPost,
-      name: req.body.posterName,
       title: req.body.title,
       date: new Date(),
     });

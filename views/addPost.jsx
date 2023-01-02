@@ -3,9 +3,9 @@ const Layout = require('./Layout');
 const { faker } = require('@faker-js/faker');
 
 module.exports = function Form(props) {
-  const { myTitle, placeHolerInput, placeHolertitle, error, userid, username} = props;
+  const { myTitle, placeHolerInput, placeHolertitle, error, userid} = props;
   return (
-    <Layout myTitle={myTitle} userid={userid} username={username}>
+    <Layout myTitle={myTitle} userid={userid}>
       <div className='form'>
         <br />
         <form action='/addPost' method='POST'>
@@ -28,17 +28,6 @@ module.exports = function Form(props) {
             />
             {props.error.title && (
               <div className='errorMsg'>Введите заголовок</div>
-            )}
-          </div>
-          <div className='inputAndError'>
-            <input
-              type='text'
-              name='posterName'
-              placeholder={placeHolerInput}
-              value={faker.name.fullName()}
-            />
-            {props.error.posterName && (
-              <div className='errorMsg'>Введите имя</div>
             )}
           </div>
           <div>

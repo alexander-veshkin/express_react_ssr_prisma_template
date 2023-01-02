@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const checkAdmin = require('../../lib/middleware/middleware.js');
+const { checkAdmin }  = require('../../lib/middleware/middleware.js');
 const render = require('../../lib/render');
 const Layout = require('../../views/Layout');
 
