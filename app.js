@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { sequelize } = require('./db/models');
+const { QueryTypes } = require('sequelize');
 const session = require('express-session');
-const { checkLoggedIn } = require('./lib/middleware/middleware')
+const { checkLoggedIn } = require('./lib/middleware/middleware');
 
 require('@babel/register');
 

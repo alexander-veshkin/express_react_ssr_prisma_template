@@ -38,7 +38,6 @@ router.post('/', async (req, res) => {
       textAreaValue: 'ВВЕДИТЕ ПОСТ!',
       placeHolertitle: 'Some title',
       error,
-      myTitle: 'Blog',
       userid: req.session.userid,
       username: req.session.userName,
     },
@@ -50,6 +49,7 @@ router.post('/', async (req, res) => {
       body: req.body.addPost,
       title: req.body.title,
       date: new Date(),
+      user_id: req.session.userid,
     });
   }
 });

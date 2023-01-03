@@ -2,9 +2,9 @@ const React = require('react');
 const Layout = require('./Layout');
 const Post = require('./Post');
 
-module.exports = function Search({ userid}) {
+module.exports = function Search({ userid, username}) {
   return (
-    <Layout userid={userid}>
+    <Layout userid={userid} username={username}>
       <br />
       <div className='SearchForm'>
         <form action=''>

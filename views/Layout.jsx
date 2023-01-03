@@ -19,7 +19,7 @@ module.exports = function Layout(props) {
         <nav>
           {!userid && <LoginForm />}
 
-          {userid ? (
+          {userid && (
             <div className='mainControls'>
               <a href='/addPost'>
                 <button>Добавить пост</button>
@@ -37,8 +37,6 @@ module.exports = function Layout(props) {
                 <button>Поиск</button>
               </a>
             </div>
-          ) : (
-            ''
           )}
         </nav>
         {children}

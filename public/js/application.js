@@ -86,7 +86,9 @@ if (document.getElementsByClassName('registrationForm')[0]) {
   });
 }
 
-// show all posts
+//my posts
+
+// search post
 if (location.href.includes('Search')) {
   const getEl = (loc) => Array.from(document.getElementsByClassName(loc)).at(0);
 
@@ -99,6 +101,7 @@ if (location.href.includes('Search')) {
 
   searchBtn.addEventListener('click', async () => {
     event.preventDefault();
+    viewPost.setAttribute('style', 'visibility:hidden');
     let endPoint = getUrl() + 'api/posts?SearchInput=' + searchInput.value;
     const response = await fetch(endPoint);
     const res = await response.json();
@@ -112,6 +115,7 @@ if (location.href.includes('Search')) {
         getEl('bodyPost').textContent = post.body;
         getEl('titilePost').textContent = post.title;
         getEl('datePost').textContent = post.date;
+        getEl('namePost').textContent = post.name;
 
         viewPost.setAttribute('style', 'visibility:visible');
       });

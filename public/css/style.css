@@ -34,9 +34,9 @@
   padding-bottom: 20px;
 }
 
-.datePost {
+.datePost, .userName, .namePost {
   color: gray;
-  font-size: 12px;
+  font-size: 14px;
   padding-top: 5px;
 }
 

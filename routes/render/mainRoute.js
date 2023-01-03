@@ -8,7 +8,6 @@ const Layout = require('../../views/Layout');
 // root
 router.get('/', (req, res) => {
   res.cookie('test', 42);
-  console.log(req.session.userName);
   render(
     Layout,
     {
