@@ -9,7 +9,6 @@ const Nav = require('../Nav');
 module.exports = function Layout(props) {
   const { children, user, loginForm, registerForm } = props;
 
-  console.log(registerForm)
   return (
     <html lang='ru'>
       <HtmlHead />

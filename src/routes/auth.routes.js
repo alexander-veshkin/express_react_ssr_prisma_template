@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const { Login, Register } = require('../controllers/Auth');
+const { LoginForm, Login, Register } = require('../controllers/Auth');
 
-router.get('/login', Login);
+router.get('/login', LoginForm);
+router.post('/login', Login);
 router.get('/register', Register);
 
 // module.exports = router;
-module.exports = { Login, Register };
+module.exports = { LoginForm, Login, Register  };

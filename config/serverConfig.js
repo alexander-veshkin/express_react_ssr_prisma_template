@@ -2,7 +2,6 @@ const session = require('express-session');
 const sessionConfig = require('./sessionConfig');
 const cookieParser = require('cookie-parser');
 const { sessionLog } = require('../src/lib/middleware');
-const { sequelize } = require('../db/models');
 
 require('dotenv').config();
 
@@ -27,12 +26,6 @@ const start = (app) => {
 
   app.listen(PORT, async () => {
     console.log(`Server started: http://localhost:${PORT}/`);
-    try {
-      await sequelize.authenticate();
-      console.log('Соединение с базой установлено!');
-    } catch (err) {
-      console.log(err, 'Error!');
-    }
   });
 };
 
