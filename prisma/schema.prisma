@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int              @id @default(autoincrement())
+  name            String?
+  email           String
+  role            Role             @default(BASIC)
+  preferences     Json?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  Posts           Post[]
+  FavoritedPosts  Post[]           @relation("FavoritedPosts")
+  UserPreferences UserPreferences?
+
+  @@index([email])
+}
+
+//one to one (dont forget @uniq notation)
+model UserPreferences {
+  id           Int     @id @default(autoincrement())
+  emailUpdates Boolean
+  gender       String
+  user         User    @relation(fields: [userId], references: [id])
+  userId       Int     @unique
+}
+
+//one to many
+model Post {
+  id            Int        @id @default(autoincrement())
+  rating        Float
+  author        User       @relation(fields: [userId], references: [id])
+  userId        Int
+  favoritedBy   User?      @relation("FavoritedPosts", fields: [favoritedById], references: [id])
+  favoritedById Int?
+  categories    Category[]
+}
+
+// many to may - one post could have many categories. And one categorie could have many posts
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  posts Post[]
+}
+
+enum Role {
+  BASIC
+  ADMIN
+  MODERATOR
+}

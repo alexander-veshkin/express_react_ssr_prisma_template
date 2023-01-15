@@ -9,6 +9,7 @@ const Nav = require('../Nav');
 module.exports = function Layout(props) {
   const { children, user, loginForm, registerForm } = props;
 
+  console.log(registerForm)
   return (
     <html lang='ru'>
       <HtmlHead />
@@ -17,9 +18,7 @@ module.exports = function Layout(props) {
         <div className = 'nav'><a href='/'><img className='homeIcon' src='/img/home.png' /></a>
         {!user && !loginForm && !registerForm && <LoginRegForm />}
         <Nav user={user} />
-        
         </div>
-
 
         {loginForm && <LoginForm />}
         {registerForm && <RegForm />}

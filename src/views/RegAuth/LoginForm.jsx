@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('../Layout/Layout');
 
-module.exports = function LoginRegForm(props) {
+module.exports = function LoginRegForm() {
   return (
     <div className=''>
       <form className='loginForm' action='/login' method='POST'>
