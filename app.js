@@ -3,17 +3,17 @@ const router = express.Router();
 const { sequelize } = require('./db/models');
 const { QueryTypes } = require('sequelize');
 const session = require('express-session');
-const { checkLoggedIn } = require('./lib/middleware/middleware');
+const { checkLoggedIn } = require('./src/lib/middleware');
 
 require('@babel/register');
 
 //routes
-const Router = require('./routes/render/routes');
-const searchRoute = require('./routes/render/searchRoute');
-const mainRoute = require('./routes/render/mainRoute');
-const addPostRoute = require('./routes/render/addPostRoute');
-const allPostsRoute = require('./routes/render/allPostsRoute');
-const lastPostRoute = require('./routes/render/lastPostRoute');
+const Router = require('./src/routes/render/routes');
+const searchRoute = require('./src/routes/render/searchRoute');
+const mainRoute = require('./src/routes/render/mainRoute');
+const addPostRoute = require('./src/routes/render/addPostRoute');
+const allPostsRoute = require('./src/routes/render/allPostsRoute');
+const lastPostRoute = require('./src/routes/render/lastPostRoute');
 
 //конфиг
 const serverConfig = require('./config/serverConfig');
@@ -27,9 +27,9 @@ serverConfig(app);
 //middlewares
 
 //api routes
-const postApi = require('./routes/api/postsApi');
-const registrationApi = require('./routes/api/registrationApi');
-const loginApi = require('./routes/api/loginApi');
+const postApi = require('./src/routes/api/postsApi');
+const registrationApi = require('./src/routes/api/registrationApi');
+const loginApi = require('./src/routes/api/loginApi');
 
 //routes handlers
 app.use('/', mainRoute);

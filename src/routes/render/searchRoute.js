@@ -4,7 +4,7 @@ const router = express.Router();
 const render = require('../../lib/render');
 const Search = require('../../views/Search');
 
-const { Post } = require('../../db/models');
+const { Post } = require('../../../db/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const operatorsAliases = {

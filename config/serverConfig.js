@@ -1,7 +1,7 @@
 const session = require('express-session');
 const sessionConfig = require('./sessionConfig');
 const cookieParser = require('cookie-parser');
-const { sessionLog } = require('../lib/middleware/middleware');
+const { sessionLog } = require('../src/lib/middleware');
 
 require('dotenv').config();
 
@@ -11,7 +11,7 @@ const serverConfig = (app) => {
   const path = require('path');
 
   app.use(morgan('dev'));
-  app.use(express.static(path.join(__dirname, '../public')));
+  app.use(express.static(path.join(__dirname, '../src/public')));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 

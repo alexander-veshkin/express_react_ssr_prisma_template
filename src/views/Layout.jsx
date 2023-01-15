@@ -3,7 +3,7 @@ const LoginForm = require('./LoginForm');
 const UserHeader = require('./UserHeader');
 
 module.exports = function Layout(props) {
-  const { myTitle, children, loginform, userid, username } = props;
+  const { children, loginform, userid, username } = props;
   return (
     <html lang='ru'>
       <head>
@@ -11,8 +11,8 @@ module.exports = function Layout(props) {
         <meta httpEquiv='X-UA-Compatible' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <link rel='stylesheet' href='/css/style.css'></link>
-        <script defer src='/js/application.js'></script>
-        <title>{myTitle}</title>
+        <script type="module" src='/js/application.js'></script>
+        <script type="module" src='/js/helper.js'></script>
       </head>
       <body className='container'>
         {userid && <UserHeader userid={userid} username={username} />}

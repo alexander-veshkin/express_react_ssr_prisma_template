@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { QueryTypes } = require('sequelize');
-const { Post, sequelize } = require('../../db/models');
-const { User } = require('../../db/models');
+const { Post, sequelize } = require('../../../db/models');
+const { User } = require('../../../db/models');
 const session = require('express-session');
 
 //api/posts

@@ -4,7 +4,7 @@ const router = express.Router();
 const render = require('../../lib/render');
 const addPost = require('../../views/addPost');
 
-const { Post } = require('../../db/models');
+const { Post } = require('../../../db/models');
 
 router.get('/', (req, res) => {
   let error = { addPost: false, posterName: false, title: false };

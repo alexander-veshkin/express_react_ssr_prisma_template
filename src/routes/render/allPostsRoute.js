@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { sequelize } = require('../../db/models');
+const { sequelize } = require('../../../db/models');
 const { QueryTypes } = require('sequelize');
 
 const render = require('../../lib/render');
 const allPosts = require('../../views/AllPosts');
 
-const { Post } = require('../../db/models');
+const { Post } = require('../../../db/models');
 
 router.get('/', async (req, res) => {
   const props = await sequelize.query(
