@@ -5,7 +5,6 @@ module.exports = function Main(props) {
   const { user } = props;
   return (
     <Layout>
-      {!user}
       <div>Main</div>
     </Layout>
   );
