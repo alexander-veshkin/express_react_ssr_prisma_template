@@ -14,14 +14,15 @@ router
 
     const user = await prisma.user.findFirst({ where: { email: 'a@a.ru' } });
 
-    if(password === user.password) {
-        req.session.user = user.id
-        req.session.email = user.email
-        res.redirect('/')
+    if (password === user.password) {
+      req.session.user = user.id;
+      req.session.email = user.email;
+      res.redirect('/');
     }
 
     await prisma.$disconnect;
   });
+
 // router.get('/register', Register);
 
 module.exports = router;

@@ -9,6 +9,7 @@ module.exports = function Nav(props) {
       <button>Последние добавленные</button>
       {user && <button>Профиль</button>}
       {user && <button>Корзина</button>}
+      {user && <a href="/logout"><button>Выход</button></a>}
     </nav>
   );
 };

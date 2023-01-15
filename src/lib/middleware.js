@@ -1,5 +1,5 @@
-const checkAdmin = (req, res, next) => {
-  return req.session.userName === 'admin' ? next() : res.redirect('/');
+const checkUser = (req, res, next) => {
+  return !req.session.user ? next() : res.redirect('/');
 };
 
 const sessionLog = (req, res, next) => {
@@ -11,4 +11,4 @@ const checkLoggedIn = (req, res, next) => {
   req.session.userName ? next() : res.redirect('/');
 };
 
-module.exports = { checkAdmin, sessionLog, checkLoggedIn };
+module.exports = { checkUser, sessionLog, checkLoggedIn };
