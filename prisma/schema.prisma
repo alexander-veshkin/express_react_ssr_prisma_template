@@ -4,49 +4,36 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DB")
 }
 
 model User {
-  id              Int              @id @default(autoincrement())
-  name            String?
-  email           String
-  role            Role             @default(BASIC)
-  preferences     Json?
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  Posts           Post[]
-  FavoritedPosts  Post[]           @relation("FavoritedPosts")
-  UserPreferences UserPreferences?
+  id          Int       @id @default(autoincrement())
+  name        String?
+  email       String
+  role        Role      @default(BASIC)
+  preferences Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Products    Product[]
 
   @@index([email])
 }
 
-//one to one (dont forget @uniq notation)
-model UserPreferences {
-  id           Int     @id @default(autoincrement())
-  emailUpdates Boolean
-  gender       String
-  user         User    @relation(fields: [userId], references: [id])
-  userId       Int     @unique
-}
-
 //one to many
-model Post {
-  id            Int        @id @default(autoincrement())
-  rating        Float
-  author        User       @relation(fields: [userId], references: [id])
-  userId        Int
-  favoritedBy   User?      @relation("FavoritedPosts", fields: [favoritedById], references: [id])
-  favoritedById Int?
-  categories    Category[]
+model Product {
+  id         Int        @id @default(autoincrement())
+  name       Float
+  user       User       @relation(fields: [userId], references: [id])
+  userId     Int
+  categories Category[]
 }
 
 // many to may - one post could have many categories. And one categorie could have many posts
 model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
-  posts Post[]
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
 }
 
 enum Role {
