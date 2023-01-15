@@ -1,43 +1,44 @@
 const React = require('react');
 const Layout = require('../Layout/Layout');
 
-module.exports = function LoginRegForm() {
+module.exports = function LoginRegForm(p) {
+  const { err } = p;
   return (
     <div className='registrationForm'>
       <form method='POST' action='/register'>
         <div>
-          <label >Имя: </label>
-          <input type='text' name='name' placeholder='name' require />
+          <label>Имя: </label>
+          <input type='text' name='name' placeholder='name' require="true" />
         </div>
         <div>
-          <label >Почта: </label>
-          <input type='text' name='email' placeholder='email' require />
+          <label>Почта: </label>
+          <input type='text' name='email' placeholder='email' require="true" />
         </div>
         <br />
-        <label >Пароль: </label>
+        <label>Пароль: </label>
         <input
           type='password'
           name='password'
-          minlength='6'
-          maxlength='20'
+          minLength='3'
+          maxLength='20'
           placeholder='password'
           value='123456'
-          require
+          require="true"
         />
         <label>Повторите пароль: </label>
         <input
           type='password'
-          name='password-repeat'
-          minlength='6'
-          maxlength='20'
+          name='password_repeat'
+          minLength='3'
+          maxLength='20'
           placeholder='repeat password'
           value='123456'
-          require
+          require="true"
         />
         <button className='regBtn' type='submit'>
           Зарегистрироваться
         </button>
-        <div className='errMsg'></div>
+        {err && <div className='errMsg'>{err}</div>}
       </form>
     </div>
   );

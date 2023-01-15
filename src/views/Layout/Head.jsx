@@ -1,6 +1,6 @@
 const React = require('react');
 
-module.exports = function HtmlHead() {
+module.exports = function Head() {
   return (
     <head>
       <meta charSet='UTF-8' />

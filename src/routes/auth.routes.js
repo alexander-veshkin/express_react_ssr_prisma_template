@@ -12,17 +12,20 @@ router
   .post('/', async (req, res) => {
     const { email, password } = req.body;
 
-    const user = await prisma.user.findFirst({ where: { email: 'a@a.ru' } });
-
-    if (password === user.password) {
-      req.session.user = user.id;
-      req.session.email = user.email;
-      res.redirect('/');
-    }
-
-    await prisma.$disconnect;
+    prisma.user
+      .findFirst({ where: { email: email } })
+      .then((user) => {
+        if (user && password === user.password) {
+          req.session.user = user.id;
+          
+          res.redirect('/');
+        } else {
+          let msg = 'wrong user or password';
+          render(Layout, { loginForm: true, err: msg }, res);
+        }
+      })
+      .catch((e) => console.log(e))
+      .finally(async () => await prisma.$disconnect);
   });
-
-// router.get('/register', Register);
 
 module.exports = router;

@@ -6,6 +6,7 @@ require('@babel/register');
 //routes
 const Main = require('./src/routes/main.routes');
 const Auth = require('./src/routes/auth.routes');
+const Reg = require('./src/routes/reg.routes');
 const Logout = require('./src/routes/logout.routes');
 
 const { checkUser } = require('./src/lib/middleware');
@@ -18,6 +19,7 @@ serverConfig(app);
 //routes handlers
 app.use('/', Main);
 app.use('/login', checkUser, Auth);
+app.use('/register', checkUser, Reg);
 app.use('/', Logout);
 // app.use('/register', Register);
 

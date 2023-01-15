@@ -4,8 +4,8 @@ const render = require('../lib/render');
 const MainView = require('../views/Main');
 
 const Main = (req, res) => {
-  const { user } = req.session;
-  render(MainView, {user: user}, res);
+  const { user, name } = req.session;
+  render(MainView, {user, name}, res);
 };
 
 module.exports = { Main };
