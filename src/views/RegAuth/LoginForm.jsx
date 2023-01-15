@@ -7,13 +7,14 @@ module.exports = function LoginRegForm() {
       <form className='loginForm' action='/login' method='POST'>
         <div>
           <label>Почта: </label>
-          <input type='text' name='email' placeholder='e-mail' require="true" />
+          <input type='text' name='email' placeholder='e-mail' require="true" value="a@a.ru" />
           <label>Пароль: </label>
           <input
             type='password'
             name='password'
             placeholder='password'
             require="true"
+            value="1"
           />
           <div errMsg=''></div>
         </div>

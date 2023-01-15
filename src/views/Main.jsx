@@ -4,7 +4,7 @@ const Layout = require('./Layout/Layout');
 module.exports = function Main(props) {
   const { user } = props;
   return (
-    <Layout>
+    <Layout user={user}>
       <div>Main</div>
     </Layout>
   );

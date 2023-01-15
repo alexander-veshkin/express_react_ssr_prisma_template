@@ -1,11 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const render = require('../lib/render');
+const Layout = require('../views/Layout/Layout');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-const { LoginForm, Login, Register } = require('../controllers/Auth');
+router
+  .get('/', async (req, res) => {
+    render(Layout, { loginForm: true }, res);
+  })
+  .post('/', async (req, res) => {
+    const { email, password } = req.body;
 
-router.get('/login', LoginForm);
-router.post('/login', Login);
-router.get('/register', Register);
+    const user = await prisma.user.findFirst({ where: { email: 'a@a.ru' } });
 
-// module.exports = router;
-module.exports = { LoginForm, Login, Register  };
+    if(password === user.password) {
+        req.session.user = user.id
+        req.session.email = user.email
+        res.redirect('/')
+    }
+
+    await prisma.$disconnect;
+  });
+// router.get('/register', Register);
+
+module.exports = router;
