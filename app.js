@@ -16,7 +16,7 @@ serverConfig(app);
 
 //routes handlers
 app.use('/', Main);
-app.use('/', Login);
-app.use('/', Register);
+app.use('/login', Login);
+app.use('/register', Register);
 
 start(app);
