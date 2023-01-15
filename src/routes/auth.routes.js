@@ -7,3 +7,4 @@ router.get('/login', Login);
 router.get('/register', Register);
 
 module.exports = router;
+module.exports = { Login, Register };

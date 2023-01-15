@@ -1,12 +1,11 @@
 const express = require('express');
 
-const { checkLoggedIn } = require('./src/lib/middleware');
+// const { checkLoggedIn } = require('./src/lib/middleware');
 require('@babel/register');
 
 //routes
 const Main = require('./src/routes/main.routes');
-const Login = require('./src/routes/auth.routes');
-const Register = require('./src/routes/auth.routes');
+const { Login, Register } = require('./src/routes/auth.routes');
 
 //конфиг
 const { start, serverConfig } = require('./config/serverConfig');
